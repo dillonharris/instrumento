@@ -16,6 +16,7 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 group :development, :test do
   gem 'rspec-rails'
