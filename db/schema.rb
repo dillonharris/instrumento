@@ -11,9 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170406192649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "add_ons", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "total"
+    t.integer  "instrument_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "add_ons", ["instrument_id"], name: "index_add_ons_on_instrument_id", using: :btree
+
+  create_table "instruments", force: :cascade do |t|
+    t.string   "name"
+    t.string   "model"
+    t.text     "description"
+    t.string   "instrument_type"
+    t.string   "make"
+    t.text     "specs"
+    t.string   "picture"
+    t.string   "video"
+    t.boolean  "availability"
+    t.text     "stores"
+    t.decimal  "estimated_price"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_foreign_key "add_ons", "instruments"
 end
